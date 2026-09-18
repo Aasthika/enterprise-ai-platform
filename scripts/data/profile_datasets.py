@@ -17,6 +17,15 @@ from typing import Any, Iterable
 RAW_DATA_DIR = Path("data/raw")
 METADATA_DIR = Path("data/metadata")
 SUPPORTED_EXTENSIONS = {".csv", ".xlsx", ".xls"}
+MAX_SAMPLE_ITEMS = 10
+SUMMARIZED_ANOMALY_KEYS = {
+    "negative_quantities",
+    "zero_quantities",
+    "negative_prices",
+    "zero_prices",
+    "unusually_large_quantities",
+    "unusually_large_prices",
+}
 
 try:
     from openpyxl import load_workbook
@@ -227,6 +236,13 @@ def compute_common_values(values: list[Any], limit: int = 5) -> list[dict[str, A
     return [
         {"value": value, "count": count} for value, count in counts.most_common(limit)
     ]
+
+
+def summarize_anomaly_records(
+    records: list[dict[str, Any]], limit: int = MAX_SAMPLE_ITEMS
+) -> dict[str, Any]:
+    sample = records[:limit]
+    return {"count": len(records), "sample": sample}
 
 
 def compute_invoice_date_metrics(
@@ -475,12 +491,12 @@ def profile_excel_workbook(path: Path) -> dict[str, Any]:
         "empty_columns": [],
         "mixed_type_columns": [],
         "date_parsing_issues": [],
-        "negative_quantities": [],
-        "zero_quantities": [],
-        "negative_prices": [],
-        "zero_prices": [],
-        "unusually_large_quantities": [],
-        "unusually_large_prices": [],
+        "negative_quantities": {"count": 0, "sample": []},
+        "zero_quantities": {"count": 0, "sample": []},
+        "negative_prices": {"count": 0, "sample": []},
+        "zero_prices": {"count": 0, "sample": []},
+        "unusually_large_quantities": {"count": 0, "sample": []},
+        "unusually_large_prices": {"count": 0, "sample": []},
         "duplicate_rows": sum(
             sheet["quality_checks"]["duplicate_rows"] for sheet in sheet_profiles
         ),
@@ -515,8 +531,24 @@ def profile_excel_workbook(path: Path) -> dict[str, Any]:
             "unusually_large_quantities",
             "unusually_large_prices",
         ]:
-            aggregate[key].extend(sheet["quality_checks"].get(key, []))
+            current = sheet["quality_checks"].get(key, [])
+            if key in SUMMARIZED_ANOMALY_KEYS:
+                current_summary = (
+                    current
+                    if isinstance(current, dict)
+                    else summarize_anomaly_records(current, MAX_SAMPLE_ITEMS)
+                )
+                aggregate[key]["count"] += current_summary["count"]
+                aggregate[key]["sample"].extend(
+                    current_summary["sample"][:MAX_SAMPLE_ITEMS]
+                )
+                aggregate[key]["sample"] = aggregate[key]["sample"][:MAX_SAMPLE_ITEMS]
+            else:
+                aggregate[key].extend(current[:MAX_SAMPLE_ITEMS])
 
+    aggregate["date_parsing_issues"] = aggregate["date_parsing_issues"][
+        :MAX_SAMPLE_ITEMS
+    ]
     result = {
         "relative_path": safe_relative_path(path),
         "filename": path.name,

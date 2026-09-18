@@ -65,6 +65,15 @@ class ProfileDatasetsTests(unittest.TestCase):
             self.assertEqual(quantity["missing_count"], 0)
             self.assertIn("numeric_summary", quantity)
             self.assertEqual(profile["quality_checks"]["duplicate_rows"], 1)
+            self.assertNotIn("_raw_rows", json.dumps(profile, ensure_ascii=False))
+            self.assertLessEqual(
+                len(profile["quality_checks"]["negative_quantities"]["sample"]),
+                10,
+            )
+            self.assertLessEqual(
+                len(profile["quality_checks"]["negative_prices"]["sample"]),
+                10,
+            )
 
     def test_type_inference_and_missing_values(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -175,6 +184,9 @@ class ProfileDatasetsTests(unittest.TestCase):
             self.assertEqual(date_issues[0]["column"], "InvoiceDate")
             self.assertEqual(date_issues[0]["value"], "bad-date")
             self.assertEqual(other_issue_values, [])
+            self.assertLessEqual(
+                len(profile["quality_checks"]["date_parsing_issues"]), 10
+            )
 
     def test_numeric_statistics_and_json_generation(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -209,6 +221,12 @@ class ProfileDatasetsTests(unittest.TestCase):
             self.assertIn("generated_at", json_text)
             self.assertIn("datasets", json_text)
             self.assertIn("quality_summary", json_text)
+            self.assertNotIn("_raw_rows", json_text)
+            self.assertNotIn("every row", json_text.lower())
+            self.assertLessEqual(
+                len(profile["quality_checks"]["zero_prices"]["sample"]),
+                10,
+            )
 
     def test_unsupported_extension_handling(self):
         with tempfile.TemporaryDirectory() as tmpdir:
