@@ -1,0 +1,279 @@
+{
+  "generated_at": "2026-09-18T06:13:38.505329+00:00",
+  "inventory_schema_version": "1.0",
+  "datasets": [
+    {
+      "relative_path": "data\\raw\\online_retail_ii\\online_retail_II.xlsx",
+      "filename": "online_retail_II.xlsx",
+      "extension": ".xlsx",
+      "file_size_bytes": 45622278,
+      "file_size_mb": 43.508795,
+      "row_count": 541910,
+      "column_count": 8,
+      "column_names": [
+        "Invoice",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "Price",
+        "Customer ID",
+        "Country",
+        "Invoice",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "Price",
+        "Customer ID",
+        "Country"
+      ],
+      "data_types": {
+        "Invoice": "string",
+        "StockCode": "string",
+        "Description": "string",
+        "Quantity": "string",
+        "InvoiceDate": "string",
+        "Price": "string",
+        "Customer ID": "string",
+        "Country": "string"
+      },
+      "missing_values": {
+        "Invoice": 0,
+        "StockCode": 0,
+        "Description": 1454,
+        "Quantity": 0,
+        "InvoiceDate": 0,
+        "Price": 0,
+        "Customer ID": 135080,
+        "Country": 0
+      },
+      "duplicate_row_count": 12133,
+      "sheet_names": [
+        "Year 2009-2010",
+        "Year 2010-2011"
+      ],
+      "sheet_details": [
+        {
+          "sheet_name": "Year 2009-2010",
+          "row_count": 525461,
+          "column_count": 8,
+          "column_names": [
+            "Invoice",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "Price",
+            "Customer ID",
+            "Country"
+          ],
+          "data_types": {
+            "Invoice": "string",
+            "StockCode": "string",
+            "Description": "string",
+            "Quantity": "string",
+            "InvoiceDate": "string",
+            "Price": "string",
+            "Customer ID": "string",
+            "Country": "string"
+          },
+          "missing_values": {
+            "Invoice": 0,
+            "StockCode": 0,
+            "Description": 2928,
+            "Quantity": 0,
+            "InvoiceDate": 0,
+            "Price": 0,
+            "Customer ID": 107927,
+            "Country": 0
+          },
+          "duplicate_row_count": 6865,
+          "contains_data": true
+        },
+        {
+          "sheet_name": "Year 2010-2011",
+          "row_count": 541910,
+          "column_count": 8,
+          "column_names": [
+            "Invoice",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "Price",
+            "Customer ID",
+            "Country"
+          ],
+          "data_types": {
+            "Invoice": "string",
+            "StockCode": "string",
+            "Description": "string",
+            "Quantity": "string",
+            "InvoiceDate": "string",
+            "Price": "string",
+            "Customer ID": "string",
+            "Country": "string"
+          },
+          "missing_values": {
+            "Invoice": 0,
+            "StockCode": 0,
+            "Description": 1454,
+            "Quantity": 0,
+            "InvoiceDate": 0,
+            "Price": 0,
+            "Customer ID": 135080,
+            "Country": 0
+          },
+          "duplicate_row_count": 5268,
+          "contains_data": true
+        }
+      ]
+    }
+  ],
+  "file_metadata": [
+    {
+      "relative_path": "data\\raw\\online_retail_ii\\online_retail_II.xlsx",
+      "filename": "online_retail_II.xlsx",
+      "extension": ".xlsx",
+      "file_size_bytes": 45622278,
+      "file_size_mb": 43.508795,
+      "row_count": 541910,
+      "column_count": 8,
+      "column_names": [
+        "Invoice",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "Price",
+        "Customer ID",
+        "Country",
+        "Invoice",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "Price",
+        "Customer ID",
+        "Country"
+      ],
+      "data_types": {
+        "Invoice": "string",
+        "StockCode": "string",
+        "Description": "string",
+        "Quantity": "string",
+        "InvoiceDate": "string",
+        "Price": "string",
+        "Customer ID": "string",
+        "Country": "string"
+      },
+      "missing_values": {
+        "Invoice": 0,
+        "StockCode": 0,
+        "Description": 1454,
+        "Quantity": 0,
+        "InvoiceDate": 0,
+        "Price": 0,
+        "Customer ID": 135080,
+        "Country": 0
+      },
+      "duplicate_row_count": 12133,
+      "sheet_names": [
+        "Year 2009-2010",
+        "Year 2010-2011"
+      ],
+      "sheet_details": [
+        {
+          "sheet_name": "Year 2009-2010",
+          "row_count": 525461,
+          "column_count": 8,
+          "column_names": [
+            "Invoice",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "Price",
+            "Customer ID",
+            "Country"
+          ],
+          "data_types": {
+            "Invoice": "string",
+            "StockCode": "string",
+            "Description": "string",
+            "Quantity": "string",
+            "InvoiceDate": "string",
+            "Price": "string",
+            "Customer ID": "string",
+            "Country": "string"
+          },
+          "missing_values": {
+            "Invoice": 0,
+            "StockCode": 0,
+            "Description": 2928,
+            "Quantity": 0,
+            "InvoiceDate": 0,
+            "Price": 0,
+            "Customer ID": 107927,
+            "Country": 0
+          },
+          "duplicate_row_count": 6865,
+          "contains_data": true
+        },
+        {
+          "sheet_name": "Year 2010-2011",
+          "row_count": 541910,
+          "column_count": 8,
+          "column_names": [
+            "Invoice",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "Price",
+            "Customer ID",
+            "Country"
+          ],
+          "data_types": {
+            "Invoice": "string",
+            "StockCode": "string",
+            "Description": "string",
+            "Quantity": "string",
+            "InvoiceDate": "string",
+            "Price": "string",
+            "Customer ID": "string",
+            "Country": "string"
+          },
+          "missing_values": {
+            "Invoice": 0,
+            "StockCode": 0,
+            "Description": 1454,
+            "Quantity": 0,
+            "InvoiceDate": 0,
+            "Price": 0,
+            "Customer ID": 135080,
+            "Country": 0
+          },
+          "duplicate_row_count": 5268,
+          "contains_data": true
+        }
+      ]
+    }
+  ],
+  "schema_metadata": {
+    "supported_extensions": [
+      ".csv",
+      ".xls",
+      ".xlsx"
+    ],
+    "raw_data_root": "data/raw"
+  },
+  "quality_summary": {
+    "total_file_count": 1,
+    "total_row_count": 541910,
+    "total_column_count": 8,
+    "files_missing_rows": 0,
+    "files_with_duplicate_rows": 1
+  }
+}
